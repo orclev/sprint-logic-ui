@@ -1,0 +1,4 @@
+h3 Teams
+ul
+  li(data-ng-repeat="team in teams")
+    div.teamBox(data-ng-bind="team.teamName", data-ng-click="selectTeam(team)")

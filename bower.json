@@ -1,0 +1,24 @@
+{
+  "name": "frontend",
+  "main": "app.js",
+  "version": "0.0.0",
+  "authors": [
+    "R. Kyle Murphy <orclev@gmail.com>"
+  ],
+  "license": "GPL3",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "angular": "~1.2.14",
+    "angular-route": "~1.2.14"
+  },
+  "dependencies": {
+    "angular-resource": "~1.2.16"
+  }
+}
