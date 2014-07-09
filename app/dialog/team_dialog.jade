@@ -1,0 +1,12 @@
+.modal(tabindex="-1", role="dialog")
+  .modal-dialog
+    .modal-content
+      .modal-header(ng-show="title")
+        button.close(type="button", ng-click="$hide()") &times;
+        h4.modal-title(ng-bind="title")
+      .modal-body
+        ul
+          li(data-ng-repeat="team in teams")
+            a(href="#", data-ng-click="selectTeam(team)", data-ng-bind="team.teamName")
+      .modal-footer
+        button.btn.btn-default(type="button", ng-click="$hide()") Close

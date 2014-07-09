@@ -14,9 +14,6 @@ interface ITeamList {
 }
 
 interface ITeamResourceClass extends ngr.IResourceClass<ITeamResource> {
-  get(): ITeamResource;
-  query(): ITeamResource[];
-  save(): ITeamResource;
 }
 
 var teamService: ng.IModule = angular.module('teamService', ['ngResource']);

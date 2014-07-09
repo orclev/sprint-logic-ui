@@ -122,7 +122,10 @@ gulp.task('libJS', 'generate lib.js', function() {
     './bower_components/bootstrap/dist/js/bootstrap.js',
     './bower_components/angular/angular.js',
     './bower_components/angular-route/angular-route.js',
-    './bower_components/angular-resource/angular-resource.js'
+    './bower_components/angular-resource/angular-resource.js',
+    './bower_components/angular-strap/dist/angular-strap.min.js',
+    './bower_components/angular-strap/dist/angular-strap.tpl.min.js',
+    './bower_components/underscore.js'
     ]).pipe(concat('lib.js'))
       .pipe(gulp.dest('./build'));
 });

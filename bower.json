@@ -19,6 +19,8 @@
     "angular-route": "~1.2.14"
   },
   "dependencies": {
-    "angular-resource": "~1.2.16"
+    "angular-resource": "~1.2.16",
+    "angular-strap": "~2.0.0",
+    "underscore": "~1.6.0"
   }
 }

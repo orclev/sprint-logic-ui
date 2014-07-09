@@ -1,11 +1,10 @@
 /// <reference path="tsd.d.ts" />
 
-interface IMainScope extends ng.IScope {
-  teams: ITeamResource[];
-  selectTeam: ($event: ITeamResource) => void;
+interface IMainScope extends IAppScope {
+  sprints: ISprintResource[];
 }
 
-angular.module('frontend-main', ['ngRoute'])
+angular.module('frontend-main', ['ngRoute', 'sprintService'])
   .config(function ($routeProvider: ng.route.IRouteProvider): void {
     $routeProvider
       .when('/', {
@@ -13,11 +12,15 @@ angular.module('frontend-main', ['ngRoute'])
         controller: 'MainCtrl'
       });
   })
-  .controller('MainCtrl', function ($scope: IMainScope, Team: ITeamResourceClass, Sprint: ISprintResourceClass): void {
-    var teams: ITeamResource[] = Team.query();
-    $scope.teams = teams;
-    $scope.selectTeam = function ($event: ITeamResource): void {
-      var selectedIdent: string = $event.teamIdent;
-      Sprint.query({teamId: selectedIdent});
-    };
+  .controller('MainCtrl', function ($scope: IMainScope, Sprint: ISprintResourceClass): void {
+    $scope.$watch('selectedTeam', function (newVal: ITeamResource, oldVal: ITeamResource): void {
+        if(newVal === undefined) {
+          $scope.sprints = [];
+          return;
+        }
+        if(oldVal !== undefined && newVal.teamIdent === oldVal.teamIdent) {
+          return;
+        }
+        $scope.sprints = Sprint.query({teamId: newVal.teamIdent});
+      });
   });

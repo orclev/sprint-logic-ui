@@ -1,5 +1,7 @@
 /// <reference path="tsd.d.ts" />
-angular.module('frontend', [ 'ngRoute', 'frontend-main', 'templates', 'teamService', 'sprintService'])
+
+angular.module('frontend', [ 'ngRoute', 'app-controller', 'team-controller', 'frontend-main'
+    , 'templates', 'mgcrea.ngStrap', 'teamService', 'sprintService'])
   .config(function($routeProvider: ng.route.IRouteProvider): any {
     return $routeProvider
       .otherwise({redirectTo: '/'});

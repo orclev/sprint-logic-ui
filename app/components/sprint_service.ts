@@ -3,8 +3,16 @@
 import ngr = ng.resource;
 
 interface ISprintResource extends ngr.IResource<ISprintResource> {
-  teamName: string;
-  teamIdent: string;
+  sprintTeam: string;
+  sprintIdent: string;
+  sprintNumber: number;
+  sprintPeople: number;
+  sprintWorkDays: number;
+  sprintVacationDays: number;
+  sprintInterruptHours?: number;
+  sprintPlannedPoints: number;
+  sprintDeliveredPoints?: number;
+  sprintLatest: boolean;
 }
 
 interface ISprintList {
@@ -19,8 +27,6 @@ interface ISprintParams extends Object {
 }
 
 interface ISprintResourceClass extends ngr.IResourceClass<ISprintResource> {
-  //get(params: Object): ISprintResource;
-  //query(params: Object): ISprintResource[];
 }
 
 var sprintService: ng.IModule = angular.module('sprintService', ['ngResource']);
@@ -36,7 +42,7 @@ sprintService.factory('Sprint', ['$resource',
       isArray: true,
       transformResponse: {
         function (data: string): ISprintResource[] {
-          var parsed: ITeamList = angular.fromJson(data);
+          var parsed: ISprintList = angular.fromJson(data);
           return parsed.items;
         }
       }

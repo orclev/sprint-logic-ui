@@ -1,4 +1,8 @@
-h3 Teams
+h3 Sprints
 ul
-  li(data-ng-repeat="team in teams")
-    div.teamBox(data-ng-bind="team.teamName", data-ng-click="selectTeam(team)")
+  li(data-ng-repeat="sprint in sprints track by sprint.sprintIdent")
+    .teamBox
+      ul
+        li(data-ng-bind-template="id: {{sprint.sprintIdent}}")
+        li(data-ng-bind-template="number: {{sprint.sprintNumber}}")
+        li(data-ng-bind-template="people: {{sprint.sprintPeople}}")

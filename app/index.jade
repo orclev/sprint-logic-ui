@@ -8,8 +8,16 @@ html(lang="en")
     link(href="lib.css" rel="stylesheet")
     link(href="app.css" rel="stylesheet")
 
-  body(data-ng-app="frontend")
-    div(class="container" data-ng-view="")
+  body(data-ng-app="frontend", data-ng-controller="AppCtrl")
+    div.navbar.navbar-default(role="navigation", data-bs-navbar, data-ng-controller="TeamCtrl")
+      div.navbar-header
+        a.navbar-brand(href="#") Sprint Logic
+      ul.nav.navbar-nav
+        li
+          a(href="#", bs-modal="teamDialog", data-template="dialog/team_dialog.html", data-ng-bind="selectedTeamName")
+        li(data-match-route="/?(navbar)?")
+          a(href="#/") Home
+    div.container(data-ng-view="")
     script(src="lib.js")
     script(src="templates.js")
     script(src="bundle.js")
