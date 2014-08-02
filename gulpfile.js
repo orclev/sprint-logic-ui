@@ -4,7 +4,8 @@ var gutil       = require('gulp-util');
 var connect     = require('gulp-connect');
 var gulpif      = require('gulp-if');
 var gulpIgnore  = require('gulp-ignore');
-var ts          = require('gulp-type');
+//var ts          = require('gulp-type');
+var ts          = require('gulp-ts');
 var tslint      = require('gulp-tslint-log');
 //var concat      = require('gulp-concat');
 var concat      = require('gulp-concat-sourcemap');
@@ -17,11 +18,20 @@ var clean       = require('gulp-clean');
 var todo        = require('gulp-todos');
 //var notify      = require("gulp-notify");
 
-var tsProject = ts.createProject({
+//var tsProject = ts.createProject({
+//  sourceMap: true,
+//  declarationFiles: false,
+//  noExternalResolve: true
+//});
+
+var tsOpts = {
   sourceMap: true,
-  declarationFiles: false,
-  noExternalResolve: true
-});
+  declaration: false,
+  noImplicitAny: true,
+  noResolve: true,
+  target: 'ES5',
+  out: 'bundle.js'
+};
 
 gulp.task('clean', 'remove build cruft', function() {
   return gulp.src(['./build', './package'], {read: false}) // TODO: generates defs?
@@ -31,20 +41,24 @@ gulp.task('clean', 'remove build cruft', function() {
 gulp.task('appJS', 'compile js', function() {
   // concatenate compiled .coffee files and js files
   // into build/app.js
-  var tsResult = gulp.src([
+  //var tsResult = gulp.src([
+  return gulp.src([
       './app/**/*.ts'
       ,'./defs/**/*.d.ts'
       ,'!./app/**/*_test.ts'
     ])
-    .pipe(ts(tsProject));
-  tsResult.map.pipe(gulp.dest('./build'));
-  tsResult.dts.pipe(gulp.dest('./defs'));
-  return tsResult.js
+    //.pipe(ts(tsProject));
+    .pipe(ts(tsOpts))
     .pipe(ngAnnotate())
-    .pipe(gulpIgnore(/_test.js$/))
-    .pipe(gulp.dest('./build'))
-    .pipe(concat('bundle.js'))
     .pipe(gulp.dest('./build'));
+  //tsResult.map.pipe(gulp.dest('./build'));
+  //tsResult.dts.pipe(gulp.dest('./defs'));
+  //return tsResult.js
+  //  .pipe(ngAnnotate())
+  //  .pipe(gulpIgnore(/_test.js$/))
+  //  .pipe(gulp.dest('./build'))
+  //  .pipe(concat('bundle.js'))
+  //  .pipe(gulp.dest('./build'));
 });
 
 gulp.task('docs', 'generate jsdoc', function() {
@@ -70,12 +84,13 @@ gulp.task('testJS', 'compile tests', function() {
       './app/**/*_test.ts'
       , './defs/**/*.d.ts'
     ])
-    .pipe(ts(tsProject))
-    .js.pipe(gulp.dest('./build'))
+    .pipe(ts(tsOpts))
+    .pipe(gulp.dest('./build'));
+    //.js.pipe(gulp.dest('./build'))
 });
 
 gulp.task('tslint', 'run lint on typescript', function() {
-  return gulp.src(['./app/**/*.ts',])
+  return gulp.src(['./app/**/*.ts'])
     .pipe(tslint());
 });
 
@@ -123,9 +138,11 @@ gulp.task('libJS', 'generate lib.js', function() {
     './bower_components/angular/angular.js',
     './bower_components/angular-route/angular-route.js',
     './bower_components/angular-resource/angular-resource.js',
-    './bower_components/angular-strap/dist/angular-strap.min.js',
-    './bower_components/angular-strap/dist/angular-strap.tpl.min.js',
-    './bower_components/underscore.js'
+    //'./bower_components/angular-strap/dist/angular-strap.js',
+    './bower_components/angular-ui/build/angular-ui.js',
+    './bower_components/angular-bootstrap/ui-bootstrap.min.js',
+    './bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
+    './bower_components/angular-ui-router/release/angular-ui-router.js'
     ]).pipe(concat('lib.js'))
       .pipe(gulp.dest('./build'));
 });

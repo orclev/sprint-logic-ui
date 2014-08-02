@@ -11,7 +11,7 @@ interface ITeamScope extends IAppScope {
   teamSelectModal: any;
 }
 
-angular.module('team-controller', ['ngRoute', 'teamService', 'mgcrea.ngStrap.modal'])
+angular.module('team-controller', ['ngRoute', 'teamService', 'app-controller', 'ui.bootstrap'])
   .controller('TeamCtrl', function ($scope: ITeamScope, Team: ITeamResourceClass): void {
     $scope.teamDialog = {
       "title": "Teams",

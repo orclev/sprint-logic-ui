@@ -4,3 +4,7 @@
 /// <reference path="jasmine/jasmine.d.ts" />
 /// <reference path="angularjs/angular-resource.d.ts" />
 /// <reference path="underscore/underscore.d.ts" />
+/// <reference path="angularjs/angular-animate.d.ts" />
+/// <reference path="angular-ui/angular-ui-router.d.ts" />
+/// <reference path="angular-ui-bootstrap/angular-ui-bootstrap.d.ts" />
+/// <reference path="select2/select2.d.ts" />

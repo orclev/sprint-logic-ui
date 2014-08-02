@@ -24,6 +24,7 @@
     "gulp-tslint": "^1.1.0",
     "gulp-tslint-log": "0.0.2",
     "gulp-type": "^0.1.1",
+    "gulp-ts": "~0.0.15",
     "gulp-util": "~2.2.14",
     "karma": "^0.12.1",
     "karma-chrome-launcher": "^0.1.2",

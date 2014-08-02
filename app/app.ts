@@ -1,12 +1,11 @@
 /// <reference path="tsd.d.ts" />
 
-angular.module('frontend', [ 'ngRoute', 'app-controller', 'team-controller', 'frontend-main'
-    , 'templates', 'mgcrea.ngStrap', 'teamService', 'sprintService'])
-  .config(function($routeProvider: ng.route.IRouteProvider): any {
-    return $routeProvider
-      .otherwise({redirectTo: '/'});
+angular.module('frontend', [ 'ui.router', 'app-controller', 'team-controller', 'frontend-main'
+    , 'templates', 'teamService', 'sprintService', 'ui.bootstrap'])
+  .config(function($stateProvider: ng.ui.IStateProvider, $urlRouterProvider: ng.ui.IUrlRouterProvider): any {
+    $urlRouterProvider
+      .otherwise('/');
   })
   .config(function($httpProvider: ng.IHttpProvider): void {
-    //$httpProvider.defaults.useXDomain = true;
-    delete $httpProvider.defaults.headers.common['X-Requested-With'];
+    
   });

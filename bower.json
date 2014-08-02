@@ -21,6 +21,9 @@
   "dependencies": {
     "angular-resource": "~1.2.16",
     "angular-strap": "~2.0.0",
-    "underscore": "~1.6.0"
+    "underscore": "~1.6.0",
+    "angular-ui-router": "~0.2.10",
+    "angular-ui": "~0.4.0",
+    "angular-bootstrap": "~0.11.0"
   }
 }

@@ -22,6 +22,18 @@
     },
     "underscore/underscore.d.ts": {
       "commit": "d20e745171293ced9050dd670cf71b2b139c8ccd"
+    },
+    "angularjs/angular-animate.d.ts": {
+      "commit": "7ae2aa6e4c687270842e934b99eb10d242f76ba1"
+    },
+    "angular-ui/angular-ui-router.d.ts": {
+      "commit": "7ae2aa6e4c687270842e934b99eb10d242f76ba1"
+    },
+    "angular-ui-bootstrap/angular-ui-bootstrap.d.ts": {
+      "commit": "7ae2aa6e4c687270842e934b99eb10d242f76ba1"
+    },
+    "select2/select2.d.ts": {
+      "commit": "7ae2aa6e4c687270842e934b99eb10d242f76ba1"
     }
   }
 }

@@ -7,6 +7,6 @@
       .modal-body
         ul
           li(data-ng-repeat="team in teams")
-            a(href="#", data-ng-click="selectTeam(team)", data-ng-bind="team.teamName")
+            a(href="#/", data-ng-click="selectTeam(team)", data-ng-bind="team.teamName")
       .modal-footer
         button.btn.btn-default(type="button", ng-click="$hide()") Close

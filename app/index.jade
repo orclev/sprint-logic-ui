@@ -11,13 +11,17 @@ html(lang="en")
   body(data-ng-app="frontend", data-ng-controller="AppCtrl")
     div.navbar.navbar-default(role="navigation", data-bs-navbar, data-ng-controller="TeamCtrl")
       div.navbar-header
-        a.navbar-brand(href="#") Sprint Logic
+        a.navbar-brand(href="#/") Sprint Logic
       ul.nav.navbar-nav
         li
-          a(href="#", bs-modal="teamDialog", data-template="dialog/team_dialog.html", data-ng-bind="selectedTeamName")
+          div.btn-group(dropdown)
+            button.btn.btn-primary.dropdown-toggle(type="button", data-ng-bind="selectedTeamName")
+            ul.dropdown-menu(role="menu")
+              li(ng-repeat="team in teamDialog.teams")
+                a(href="#/", data-ng-click="selectTeam(team)", data-ng-bind="team.teamName")
         li(data-match-route="/?(navbar)?")
           a(href="#/") Home
-    div.container(data-ng-view="")
+    div.container(data-ui-view="")
     script(src="lib.js")
     script(src="templates.js")
     script(src="bundle.js")
